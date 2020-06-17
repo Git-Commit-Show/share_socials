@@ -1,17 +1,19 @@
-const http = require("http");
-const fs = require("fs");
+const express = require("express");
 
-function onReqest(req, res) {
-  res.writeHead(200, { "Content-Type": "text/plain" });
-  fs.readFile("./views/index.html", null, function (err, data) {
-    if (err) {
-      res.writeHead(404);
-      res.write("File Not Found");
-    } else {
-      res.write(data);
-    }
-    res.end();
-  });
-}
+const app = express();
 
-http.createServer(onReqest).listen(8000);
+// PORT
+const PORT = process.env.PORT;
+
+// Routes
+const shareRoute = require("./routes/share");
+
+// Middleware
+app.use("/share", shareRoute);
+
+// Routes
+app.get("/", (req, res) => {
+  res.send("Home URL");
+});
+
+app.listen(PORT || 8000);
