@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/Git-Commit-Show/share_socials/issues"
   },
-  "homepage": "https://github.com/Git-Commit-Show/share_socials#readme"
+  "homepage": "https://github.com/Git-Commit-Show/share_socials#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "http": "0.0.1-security"
+  }
 }
