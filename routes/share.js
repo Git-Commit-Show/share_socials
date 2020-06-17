@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
 //desc      -   Route to create a social post
 //access    -   PUBLIC
 router.get("/create", (req, res) => {
-  res.send("Create Social Post");
+  res.render("../views/index.ejs");
 });
 
 module.exports = router;
