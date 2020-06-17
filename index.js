@@ -1,17 +1,16 @@
 const express = require("express");
-
+const shareRoute = require("./routes/share");
 const app = express();
 
 // PORT
 const PORT = process.env.PORT;
 
-// Routes
-const shareRoute = require("./routes/share");
-
 // Middleware
 app.use("/share", shareRoute);
 
-// Routes
+//@route    -   GET /
+//desc      -   Simple Route for HomePage
+//access    -   PUBLIC
 app.get("/", (req, res) => {
   res.send("Home URL");
 });
