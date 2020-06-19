@@ -1,6 +1,10 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 
 const router = express.Router();
+
+// Middleware
+const urlEncodedParser = bodyParser.urlencoded({ extended: true });
 
 //@route    -   GET /share
 //desc      -   Route to display all social posts in a day
@@ -13,7 +17,7 @@ router.get("/", (req, res) => {
 //desc      -   Route to create a social post
 //access    -   PUBLIC
 router.get("/create", (req, res) => {
-	res.render("../views/index.ejs", {
+	res.render("index", {
 		data: {},
 		errors: {},
 	});
@@ -22,23 +26,9 @@ router.get("/create", (req, res) => {
 //@route    -   POST /share/create
 //desc      -   Route to create a social post
 //access    -   PUBLIC
-router.post("/create", (req, res) => {
-	res.render("../views/index.ejs", {
-		data: req.body,
-		error: {
-			field1: {
-				msg: "A message is requried",
-			},
-			field2: {
-				msg: "A message is requried",
-			},
-			field3: {
-				msg: "A message is requried",
-			},
-		},
-	});
-
-	console.log(res);
+router.post("/create", urlEncodedParser, (req, res) => {
+	console.log(req.body);
+	res.render("done", { data: req.body });
 });
 
 module.exports = router;
